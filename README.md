@@ -27,7 +27,6 @@ Clone the repository and change the directory to blog
 
 ``` 
   $ git clone git@github.com/ShaheerCH/Blog-App.git
-
   $ cd Blog-App
 ```
 
