@@ -1,6 +1,5 @@
-<h1>List all posts </h1>
-<section class='posts'>
-  <div class='one-user'>
+<section>
+  <div class='single-user'>
     <div class='user-photo'>
       <img src='<%= @user.photo %>' alt='<%= @user.name %> thumbnail' />
     </div>
@@ -9,20 +8,27 @@
       <p>Number of Posts: <%= @user.posts_counter %></p>
     </div>
   </div>
-  <div class='posts'>
+  <h4><%= link_to 'Add new Post', new_post_path %></h4>
+  <div class='user-posts'>
     <% @user.posts.each do |post| %>
       <div class='list-posts'>
         <h5><%= link_to post.title, user_post_path(@user, post) %></h5>
         <p><%= post.text %></p>
-        <div class='like-comment'>
-          <li>Comments: <%= post.comments_counter %>, </li>
-          <li>Likes: <%= post.likes_counter %></li>
-        </div>
+        <span class='like-comment'>
+          Comments: <%= post.comments_counter || 0 %>, 
+          Likes: <%= post.likes_counter || 0 %> 
+        </span>
+        <h5><%= render partial: 'likes/form', locals: {post: post} %></h5>
       </div>
       <ul class='post-comment'>
-        <% post.comments.each do |comment| %>
-          <li><%= comment.users.name %>: <%= comment.text %></li>
+        <% if post.recent_comments.length == 0 %>
+          <p>No comments added!</p>
+        <% else %>
+          <% post.recent_comments.each do |comment| %>
+            <li><%= comment.users.name %>: <%= comment.text %></li>
+          <% end %>
         <% end %>
+        <h5><%= render partial: 'comments/form', locals: {post: post} %></h5>
       </ul>
     <% end %>
   </div>
