@@ -1,5 +1,19 @@
 <section>
-  <h1>Show details in a post</h1>
-  <h3>Post Title: <%= @post.title %></h3>
-  <h4>Post Text: <%= @post.text %></h4>
+  <div class='list-posts'>
+    <h3><%= @post.title %> by <%= @post.users.name %> </h3>
+    <p><%= @post.text %></p>
+    <span class='like-comment'>
+      Comments: <%= @post.comments_counter || 0 %>, 
+      Likes: <%= @post.likes_counter || 0 %> 
+    </span>
+  </div>
+  <ul class='post-comment'>      
+    <% if @post.comments.length == 0 %>
+      <p>No comments added!</p>
+    <% else %>
+      <% @post.comments.each do |comment| %>
+        <li><%= comment.users.name %>: <%= comment.text %></li>
+      <% end %>
+    <% end %>
+  </ul>
 </section>

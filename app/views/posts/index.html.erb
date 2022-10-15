@@ -1,1 +1,29 @@
 <h1>List all posts </h1>
+<section class='posts'>
+  <div class='one-user'>
+    <div class='user-photo'>
+      <img src='<%= @user.photo %>' alt='<%= @user.name %> thumbnail' />
+    </div>
+    <div class='user-name'>
+      <h2><%= @user.name %></h2>
+      <p>Number of Posts: <%= @user.posts_counter %></p>
+    </div>
+  </div>
+  <div class='posts'>
+    <% @user.posts.each do |post| %>
+      <div class='list-posts'>
+        <h5><%= link_to post.title, user_post_path(@user, post) %></h5>
+        <p><%= post.text %></p>
+        <div class='like-comment'>
+          <li>Comments: <%= post.comments_counter %>, </li>
+          <li>Likes: <%= post.likes_counter %></li>
+        </div>
+      </div>
+      <ul class='post-comment'>
+        <% post.comments.each do |comment| %>
+          <li><%= comment.users.name %>: <%= comment.text %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</section>
