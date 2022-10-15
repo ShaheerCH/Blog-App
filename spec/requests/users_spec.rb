@@ -4,11 +4,11 @@ RSpec.describe 'Users', type: :request do
   before(:each) do
     @user =
       User.create(
-      name: 'Love',
+       name: 'Love',
       photo: 'https://unsplash.com/photos/4aQMAif1ZKk',
       bio: 'I am a model',
       posts_counter: 4
-      )
+    )
   end
 
   context 'GET #index' do
