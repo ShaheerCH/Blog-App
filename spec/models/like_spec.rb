@@ -13,18 +13,17 @@ RSpec.describe Like, type: :model do
   let(:post) do
     Post.new(
       users: user,
-      title: 'My first photoshoot',
-      text: 'This is my first photoshoot',
+      title: 'My first photo',
+      text: 'This is my first photograph',
       comments_counter: 1,
       likes_counter: 2
     )
   end
 
-  let(:comment) do
-    Comment.new(
+  let(:like) do
+    Like.new(
       users: user,
-      posts: post,
-      text: 'Hey!, it is my first photoshoot'
+      posts: post
     )
   end
 
