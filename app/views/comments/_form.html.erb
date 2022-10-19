@@ -1,0 +1,11 @@
+<p>add your comments ... </p>
+<%= form_with model: Comment do |form| %>
+  <%= form.hidden_field :post_id, value: post.id %>
+  <div>
+    <%= form.text_field :text %>
+  </div>
+
+  <div>
+    <%= form.submit "Add comment" %>
+  </div>
+<% end %>
