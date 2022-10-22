@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "users.css" %>
     <%= stylesheet_link_tag "posts.css" %>
+    <%= stylesheet_link_tag "login.css" %>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <%= javascript_importmap_tags %>
     
@@ -16,6 +17,17 @@
 
   <body>
   <div class=container>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <% if user_signed_in? %> 
+        Hey there 
+        <strong><%= current_user.name%></strong>. 
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> 
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
+      <% else %> 
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> 
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
+      <% end %>
   <%= yield %>
 </div>
   </body>
