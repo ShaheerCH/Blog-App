@@ -72,6 +72,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'ffi'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
