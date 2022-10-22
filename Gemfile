@@ -9,6 +9,10 @@ gem 'rails', '~> 7.0.4'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
+# Add devise gem
+gem 'devise'
+gem 'letter_opener'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -72,6 +76,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'ffi'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
