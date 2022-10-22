@@ -5,7 +5,7 @@ RSpec.describe 'Post Show', type: :feature do
     @user1 = User.create(
       name: 'Love',
       bio: 'Professional Model',
-      photo: 'http://product.com',z
+      photo: 'http://vougue.com',
       posts_counter: 0
     )
 
